@@ -22,5 +22,6 @@
             }
         ]
     },
-    "kunpeng.remote.ssh.clientpath": "C:\\Windows\\System32\\OpenSSH\\ssh.exe"
+    "kunpeng.remote.ssh.clientpath": "C:\\Windows\\System32\\OpenSSH\\ssh.exe",
+    "C_Cpp.errorSquiggles": "Disabled"
 }
