@@ -1,19 +1,26 @@
 class Solution {
 public:
-    bool findNumberIn2DArray(vector<vector<int>>& matrix, int target) {
-        int i = matrix.size() - 1, j = 0;
-        while (i >= 0 && j < matrix[0].size()) 
-        {
-            if(matrix[i][j] > target){
-                i--;
-            }else if(matrix[i][j] < target){
-                j++;
-            }else{
-                return true;
+    string replaceSpace(string s) {
+        int len = s.length();
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] == ' ') {
+                count++;
+            }
+        }
+        s.resize(len+2*count);
+        for (int i = len-1;j = s.length() - 1;i<j;i--;j--){
+            if(s[i] != ' ') {
+                s[j] = s[i];
+            } else{
+                s[j - 2] = '%';
+                s[j - 1] = '2';
+                s[j] = '0';
+                j -= 2;
             }
             /* code */
         }
-        return false;
+        return s;
         
 
     }
