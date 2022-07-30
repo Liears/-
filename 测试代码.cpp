@@ -1,27 +1,34 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
 class Solution {
 public:
-    string replaceSpace(string s) {
-        int len = s.length();
-        int count = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (s[i] == ' ') {
-                count++;
-            }
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        this->preorder = preorder;
+        for (int i = 0; i < inorder.size();i++)
+        {
+            dic[inorder[i]] = i;
         }
-        s.resize(len+2*count);
-        for (int i = len-1;j = s.length() - 1;i<j;i--;j--){
-            if(s[i] != ' ') {
-                s[j] = s[i];
-            } else{
-                s[j - 2] = '%';
-                s[j - 1] = '2';
-                s[j] = '0';
-                j -= 2;
-            }
-            /* code */
-        }
-        return s;
+        return recur(0, 0, inorder.size() - 1);
         
+    }
+private:
+    vector<int> preorder;
+    unordered_map<int, int> dic;
+    TreeNode* recur(int root, int left, int right){
+        if(left > right) return nullptr;
+        TreeNode* node = new TreeNode(preorder[root]);
+        int i = dic[preorder[root];
+        node->left = recur(root+1,left,i-1);
+        node->right = recur(root+1+i-left,i+1,right);
+        return node;
 
     }
+
 };
