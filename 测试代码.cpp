@@ -1,34 +1,41 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-class Solution {
+class CQueue {
 public:
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        this->preorder = preorder;
-        for (int i = 0; i < inorder.size();i++)
-        {
-            dic[inorder[i]] = i;
-        }
-        return recur(0, 0, inorder.size() - 1);
+
+    CQueue() {
+        stack<int> stack1;
+        stack<int> stack2;
+
+    }
+    
+    void appendTail(int value) {
+        stack1.push(value);
         
     }
-private:
-    vector<int> preorder;
-    unordered_map<int, int> dic;
-    TreeNode* recur(int root, int left, int right){
-        if(left > right) return nullptr;
-        TreeNode* node = new TreeNode(preorder[root]);
-        int i = dic[preorder[root];
-        node->left = recur(root+1,left,i-1);
-        node->right = recur(root+1+i-left,i+1,right);
-        return node;
-
+    
+    int deleteHead() {
+        if (stack1.empty()) return -1;
+        while (!stack1.empty())
+        {
+            stack2.push(stack1.top());
+            stack1.pop();
+            /* code */
+        }
+        int res = stack2.top();
+        stack2.pop();
+        while (!stack2.empty())
+        {
+            stack2.pop();
+            stack1.push(stack2.top());
+        }
+        return res;
+        
+        
     }
-
 };
+
+/**
+ * Your CQueue object will be instantiated and called as such:
+ * CQueue* obj = new CQueue();
+ * obj->appendTail(value);
+ * int param_2 = obj->deleteHead();
+ */
