@@ -1,12 +1,12 @@
 class Solution {
 public:
-    string generateTheString(int n) {
-        string s(n,'a');
-        if (n%2 == 0)
-        {
-            s[0] = 'b';
-            return s;
+    int hammingWeight(uint32_t n) {
+        int ret = 0;
+        for (int i = 0; i < 32; i++) {
+            if (n & (1 << i)) {
+                ret++;
+            }
         }
-        return s;
+        return ret;
     }
 };
