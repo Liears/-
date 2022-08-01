@@ -1,26 +1,12 @@
 class Solution {
 public:
-    int cuttingRope(int n) {
-        vector<int> f;
-        int ans = 1;
-        if(n <= 3){
-            return max(n-1,1);
-        }
-        
-        f[1] = 1;
-        f[2] = 2;
-        f[3] = 3;
-
-        for (int i = 4; i <= n; i++)
+    string generateTheString(int n) {
+        string s(n,'a');
+        if (n%2 == 0)
         {
-            for (int j = 1; j <= n; j++)
-            {
-                ans = main(ans,f[j] * f[i-j]);
-            }
-            f[i] = ans;
+            s[0] = 'b';
+            return s;
         }
-        return f[n];
-        
-        
+        return s;
     }
 };
